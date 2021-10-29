@@ -1,0 +1,74 @@
+#1
+#This program is written to prompt the user for hours and rate per hour using input to compute gross pay. 
+#The hourly rate for the hours was paid up to 40 and 1.5 times the hourly rate for all hours worked above 40 hours.
+
+sh = input("Enter Hours:")
+sr = input ("Enter Rate:")
+try:
+    fh = float(sh)
+    fr = float(sr)
+except:
+    print ("Error, please enter a numeric input")
+    quit()
+print (fh, fr)
+if fh > 40:
+    a = fr * fh
+    b = (fh - 40.0) * (fr * 0.5)
+    xp = a + b
+else:
+    xp = fh * fr
+print ("Pay:",xp)
+
+#2
+#This program was written to prompt for a score between 0.0 and 1.0.
+
+score = input("Enter Score: ")
+try:
+    float_score = float(score)
+except:
+    print ("Error, please enter a numeric input")
+    quit()
+print (float_score)
+if float_score > 1.0:
+    print ("Error, please enter a number smaller than 1.0")
+    quit()
+elif float_score >= 0.9:
+    print ("A")
+elif float_score >= 0.8:
+    print ("B")
+elif float_score >= 0.7:
+    print ("C")
+elif float_score >= 0.6:
+    print ("D")
+elif float_score < 0.6:
+    print ("F")
+elif float_score < 0.0:
+        print ("Error, please enter a number greater than 0.0")
+        quit()
+   
+#3
+#This program was written to repeatedly prompt a user for integer numbers until the user enters 'done'. 
+#Once 'done' is entered, the largest and smallest of the numbers were printed out.
+   
+largest = None
+smallest = None
+while True:
+    num = input ('enter a number:')
+    if num == 'done':
+        break
+    try:
+        float_num = float(num)
+    except:
+        print('invalid input')
+        continue
+    if smallest is None:
+        smallest = float_num
+    elif float_num < smallest:
+        smallest = float_num
+    elif largest is None:
+        largest = float_num
+    elif float_num > largest:
+        largest = float_num
+
+print ('Maximum is', largest)
+print ('Minimum is', smallest)
