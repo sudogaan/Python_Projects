@@ -1,0 +1,60 @@
+#1
+#This program was written to extract the number which corresponds to X-DSPAM-Confidence in the mbox-short.txt data, given by the course instructor.
+
+fname = input("Enter file name: ")
+fh = open(fname)
+count = 0
+tot = 0
+for line in fh:
+    if not line.startswith("X-DSPAM-Confidence:"):
+        continue
+    elif line.startswith("X-DSPAM-Confidence:"):
+        pos = line.find('0')
+        a = (line[pos:pos+6])
+        k = float (a)
+        count = count + 1
+        tot = tot + k
+
+print ('Average spam confidence:', tot/count)
+
+
+#2
+#This code was written to extract the emails out of the mbox-short.txt data, given by the course instructor.
+
+fname = input("Enter file name: ")
+fh = open(fname)
+count = 0
+for line in fh:
+    line = line.rstrip()
+    if line.startswith('From:'):
+        words = line.split()
+        email = words[1]
+        print (email)
+        count = count + 1
+print("There were", count, "lines in the file with From as the first word")
+
+
+#3
+#This code was written to detect the largest word and how many times it was used in the mbıx-short.txt text.
+
+name = input("Enter file:")
+if len(name) < 1:
+    name = "mbox-short.txt"
+handle = open(name)
+counts = dict()
+for line in handle:
+    words = line.split()
+    for word in words:
+        if word.startswith('From:'):
+            email = words[1]
+            counts[email] = counts.get(email,0) + 1
+bigcount = None
+bigword = None
+for email,counts in counts.items():
+    if bigcount is None or counts > bigcount:
+        bigword = email
+        bigcount = counts
+print (bigword, bigcount)
+
+
+#4
