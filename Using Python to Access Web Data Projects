@@ -1,0 +1,13 @@
+#1
+#This program was written to extract the numbers which are present in regex_sum_42.txt file and finding the sum of these numbers.
+
+import re
+fhand = open ('regex_sum_42.txt')
+numlist = list()
+for line in fhand:
+    line = line.rstrip()
+    stuff = re.findall('([0-9]+)', line)
+    for word in stuff:
+        num = float(word)
+        numlist.append(num)
+print (sum(numlist))
